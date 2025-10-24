@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flappy Bird - Mejorado</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Fondo (la imagen cambia por nivel) -->
+  <div id="background" class="background"></div>
+
+  <!-- Menu principal -->
+  <div id="main-menu" class="menu visible">
+    <div class="menu-card glass">
+      <h1 class="game-title">Flappy<span class="accent">.</span></h1>
+      <p class="menu-sub">Tu reto — llega lo más lejos posible</p>
+
+      <div class="menu-controls">
+        <button id="btn-play" class="btn primary">JUGAR</button>
+        <div class="level-select">
+          <label for="level-select">Seleccionar Nivel</label>
+          <select id="level-select">
+            <option value="0">Nivel 1 — Selva</option>
+            <option value="1">Nivel 2 — Atardecer</option>
+          </select>
+        </div>
+        <button id="btn-instructions" class="btn">INSTRUCCIONES</button>
+        <button id="btn-leaderboard" class="btn">CLASIFICACIÓN</button>
+      </div>
+
+      <div class="menu-footer">
+        <small>Presiona <b>ArrowUp</b> o <b>Espacio</b> para volar — <b>Esc</b> para pausar</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para pedir nombre del jugador -->
+  <div id="name-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card glass scale-in">
+      <h2>Ingresa tu nombre</h2>
+      <input id="player-name-input" type="text" placeholder="Tu nombre..." maxlength="20"/>
+      <div class="modal-actions">
+        <button id="modal-start" class="btn primary">Comenzar</button>
+        <button id="modal-cancel" class="btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel instrucciones -->
+  <div id="instructions-panel" class="panel hidden glass">
+    <h2>Instrucciones</h2>
+    <ul>
+      <li>Pulsa <b>ArrowUp</b> o <b>Espacio</b> para elevar al pájaro.</li>
+      <li>Evita chocar con los tubos o los límites de la pantalla.</li>
+      <li>Presiona <b>Esc</b> para pausar y ver opciones.</li>
+      <li>Selecciona nivel antes de jugar para cambiar fondo y tubos.</li>
+    </ul>
+    <button id="instructions-back" class="btn">Volver</button>
+  </div>
+
+  <!-- Leaderboard panel -->
+  <div id="leaderboard-panel" class="panel hidden glass">
+    <h2>TOP 10 - Clasificación</h2>
+    <ol id="leaderboard-list" class="leaderboard-list"></ol>
+    <div class="leaderboard-actions">
+      <button id="clear-ranking" class="btn warn">Limpiar</button>
+      <button id="leaderboard-back" class="btn">Volver</button>
+    </div>
+  </div>
+
+  <!-- Pause Menu -->
+  <div id="pause-panel" class="panel hidden">
+    <div class="pause-card glass scale-in">
+      <h2>Pausa</h2>
+      <div class="pause-actions">
+        <button id="btn-resume" class="btn primary">Continuar</button>
+        <button id="btn-restart" class="btn">Reiniciar Nivel</button>
+        <button id="btn-return-menu" class="btn">Volver al Menú</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bird sprite -->
+  <img src="images/Bird.png" alt="Pájaro" class="bird" id="bird-1" />
+
+  <!-- Mensaje central (game over / notifications) -->
+  <div class="message hidden" id="message">
+    <div id="message-content"></div>
+  </div>
+
+  <!-- Game Over modal con diseño arcade -->
+  <div id="gameover-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card glass scale-in">
+      <h2 id="gameover-title">Game Over</h2>
+      <div id="gameover-body" class="gameover-body">
+        <p class="final-score">Puntaje: <span id="final-score-val">0</span></p>
+        <p id="record-msg" class="record-msg"></p>
+      </div>
+      <div class="modal-actions">
+        <button id="go-menu" class="btn">Volver al Menú</button>
+        <button id="try-again" class="btn primary">Jugar de Nuevo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Score (mejor estilo) -->
+  <div class="score">
+    <div class="score-box">
+      <div class="score-label">SCORE</div>
+      <div id="score-value" class="score-value">0</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
